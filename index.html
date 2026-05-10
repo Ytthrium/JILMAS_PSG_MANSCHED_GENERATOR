@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIL Masantol - Smart Program Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="no-print controls">
+        <div class="global-config-container">
+            <div class="config-header">
+                <h2>Program Configuration</h2>
+                <button id="themeToggle" class="theme-toggle" title="Toggle Dark/Light Mode">🌙 Dark Mode</button>
+            </div>
+            <div class="other-inputs">
+                <label>Date: <input type="date" id="eventDate"></label>
+                <label>Subtitle: <input type="text" id="eventSubtitle" placeholder="e.g., Anniversary"></label>
+                <label>Paper Size: 
+                    <select id="paperSize">
+                        <option value="letter">Short (Letter)</option>
+                        <option value="legal">Long (Legal)</option>
+                        <option value="a4">A4</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <div class="actions" style="margin-top: 15px;">
+            <button type="button" id="btnManageLibrary" style="background: #ffc107; color: #333;">📚 Manage Activities Library</button>
+            <button type="button" id="btnAddService" style="background: #6f42c1; color: white;">+ Add New Service</button>
+            <button type="button" id="btnGenerateImage" class="btn-image">Download Image</button>
+            <button type="button" id="btnGeneratePDF" class="btn-download">Download PDF</button>
+        </div>
+    </div>
+
+    <!-- Activities Library Modal -->
+    <div id="libraryModal" class="modal no-print">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📚 Saved Activities Library</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="add-activity-form">
+                    <input type="text" id="newActivityName" placeholder="Activity name">
+                    <input type="number" id="newActivityDuration" placeholder="Duration (mins)" value="10">
+                    <input type="text" id="newActivityPerson" placeholder="Person in charge">
+                    <button id="btnSaveActivity">💾 Save Activity</button>
+                </div>
+                <div id="activitiesList" class="activities-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pdf-wrapper"> 
+        <div id="pdf-content">
+            <div class="header-text">
+                <h2>Jesus Is Lord Church Masantol</h2>
+                <p>Program Sequence Guide</p>
+                <p id="displayDate" style="font-weight: bold;"></p>
+                <p id="displaySubtitle" style="display: none; font-style: italic;"></p>
+            </div>
+
+            <div id="services-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

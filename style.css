@@ -1,0 +1,824 @@
+:root {
+    --church-green: #8dbd8d;
+    --warning-red: #ff4d4d;
+    
+    /* Light mode variables */
+    --bg-primary: #f4f4f9;
+    --bg-secondary: white;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --border-color: #999;
+    --card-bg: white;
+    --input-bg: white;
+    --input-border: #ccc;
+    --header-bg: #1e1e1e;
+    --header-text: white;
+    --table-header-bg: #f2f2f2;
+    --total-row-bg: #e9ecef;
+    --service-controls-bg: #e9ecef;
+}
+
+body.dark-mode {
+    /* Neutral black to gray shades */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #333333;
+    --card-bg: #141414;
+    --input-bg: #1a1a1a;
+    --input-border: #3a3a3a;
+    --header-bg: #0a0a0a;
+    --header-text: #e0e0e0;
+    --table-header-bg: #0f0f0f;
+    --total-row-bg: #0f0f0f;
+    --service-controls-bg: #0f0f0f;
+    --hover-bg: #222222;
+    --button-text: #e0e0e0;
+}
+
+body.dark-mode .service-controls-left input,
+body.dark-mode .service-title-input {
+    background: #1a1a1a;
+    border-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .service-title-input {
+    background: #1a1a1a;
+}
+
+body.dark-mode .service-controls {
+    border-color: #333333;
+}
+
+body.dark-mode .sub-category {
+    background-color: #0a0a0a;
+}
+
+body.dark-mode .btn-insert,
+body.dark-mode .btn-delete {
+    color: #888888;
+}
+
+body.dark-mode .btn-insert:hover {
+    color: #6fcf97;
+}
+
+body.dark-mode .btn-delete:hover {
+    color: #ff6b6b;
+}
+
+body.dark-mode .header-cell input,
+body.dark-mode .activity-input,
+body.dark-mode .person-cell input {
+    color: #e0e0e0;
+}
+
+body.dark-mode .header-cell input::placeholder,
+body.dark-mode .activity-input::placeholder,
+body.dark-mode .person-cell input::placeholder {
+    color: #666666;
+}
+
+body.dark-mode .main-header {
+    background: #2d5a2d;
+    color: #e0e0e0;
+}
+
+body.dark-mode .column-labels {
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .total-row td {
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+}
+
+body.dark-mode .warning-pill {
+    background: #cc3333;
+}
+
+body.dark-mode .btn-delete-service {
+    background: #cc3333;
+}
+
+body.dark-mode .btn-add-service {
+    background: #3a3a3a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-add-service:hover {
+    background: #4a4a4a;
+}
+
+#btnAddActivity,
+.btn-add-activity {
+    background: #007bff;
+    color: white;
+}
+
+#btnGeneratePDF {
+    background: #28a745;
+    color: white;
+}
+
+#btnGenerateImage {
+    background: #17a2b8;
+    color: white;
+}
+
+#btnAddSection,
+.btn-add-section {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-from-library {
+    background: #ffc107;
+    color: #333;
+}
+
+body.dark-mode button {
+    color: #e0e0e0;
+}
+
+body.dark-mode .service-stats {
+    color: #e0e0e0;
+}
+
+body.dark-mode .stats {
+    color: #e0e0e0;
+}
+
+body.dark-mode .warning {
+    background: #cc3333;
+    color: white;
+}
+
+body.dark-mode .global-config-container {
+    background: #0a0a0a;
+}
+
+body.dark-mode .other-inputs {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .other-inputs input,
+body.dark-mode .other-inputs select {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    border-color: #3a3a3a;
+}
+
+body.dark-mode .other-inputs label {
+    color: #a0a0a0;
+}
+
+body {
+    font-family: sans-serif;
+    background: var(--bg-primary);
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    color: var(--text-primary);
+}
+
+.no-print {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.global-config-container {
+    text-align: center;
+    background: var(--header-bg);
+    border-radius: 16px;
+    padding: 20px;
+    color: var(--header-text);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.config-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.global-config-container h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: inherit;
+}
+
+.theme-toggle {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.other-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.other-inputs input,
+.other-inputs select {
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--input-border);
+    padding: 6px;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+/* Improved Time Picker Styles */
+.service-controls-left input[type="time"] {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-family: monospace;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* Custom time picker styling */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(var(--icon-filter, 0));
+    cursor: pointer;
+    padding: 4px;
+}
+
+body.dark-mode input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* --- PER-SERVICE STYLES --- */
+.service-block {
+    margin-bottom: 40px;
+    background: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.service-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--service-controls-bg);
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.service-controls-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.service-controls-left input {
+    padding: 6px 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+
+.service-title-input {
+    font-weight: bold;
+    font-size: 14px;
+    width: 200px;
+}
+
+.service-stats {
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+}
+
+.warning-pill {
+    background: var(--warning-red);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background: var(--card-bg);
+    page-break-inside: avoid;
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 4px 6px;
+    text-align: center;
+    font-size: 11px;
+    word-wrap: break-word;
+    vertical-align: middle;
+    color: var(--text-primary);
+}
+
+th:first-child,
+td:first-child {
+    width: 18%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 12%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 38%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    width: 32%;
+}
+
+.main-header {
+    background: var(--church-green);
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #333;
+}
+
+.column-labels {
+    background: var(--table-header-bg);
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* Adjusted Header Styles for Date and Subtitle */
+.header-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header-text h2 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.header-text p {
+    margin: 2px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#btnAddActivity {
+    background: #007bff;
+    color: white;
+}
+
+#btnGeneratePDF {
+    background: #28a745;
+    color: white;
+}
+
+#btnGenerateImage {
+    background: #17a2b8;
+    color: white;
+}
+
+#btnAddSection {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-delete-service {
+    background: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    font-size: 11px;
+}
+
+#services-wrapper input {
+    box-sizing: border-box;
+}
+
+.activity-input {
+    border: none;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    outline: none;
+    font-size: 11px;
+    padding: 2px;
+    color: var(--text-primary);
+}
+
+.person-cell input {
+    border: none;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+    padding: 2px 20px 2px 2px;
+    outline: none;
+    font-size: 11px;
+    color: var(--text-primary);
+}
+
+.header-cell input {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: transparent;
+    border: none;
+    width: 80%;
+    outline: none;
+    padding: 2px;
+    color: var(--text-primary);
+}
+
+.sub-category {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-top: 2.3px solid #555;
+    border-bottom: 2.3px solid #555;
+}
+
+.header-cell,
+.person-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.header-cell {
+    justify-content: center;
+    padding: 2px 0;
+}
+
+.person-cell {
+    justify-content: flex-start;
+}
+
+.row-actions {
+    position: absolute;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.btn-insert,
+.btn-delete {
+    background: transparent;
+    border: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+}
+
+.btn-insert:hover {
+    color: #28a745;
+}
+
+.btn-delete:hover {
+    color: #000;
+}
+
+.total-row td {
+    background-color: var(--total-row-bg);
+    font-weight: bold;
+    font-size: 12px;
+    border-top: 2px solid var(--border-color);
+}
+
+#pdf-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#pdf-content {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
+
+    #pdf-content {
+        width: 100%;
+        padding: 0.2in;
+        margin: 0;
+    }
+
+    .row-actions {
+        display: none !important;
+    }
+
+    input {
+        border: none !important;
+        background: transparent !important;
+    }
+
+    td,
+    th {
+        padding: 3px 4px !important;
+    }
+
+    .service-block {
+        margin-bottom: 20px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    margin: 5% auto;
+    padding: 0;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: var(--church-green);
+    border-radius: 12px 12px 0 0;
+    color: #333;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.close-modal {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-modal:hover {
+    color: #fff;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.add-activity-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.add-activity-form input {
+    flex: 1;
+    min-width: 120px;
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+}
+
+.add-activity-form button {
+    background: #28a745;
+    color: white;
+    padding: 8px 16px;
+}
+
+.activities-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    background: var(--bg-secondary);
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.activity-info {
+    flex: 1;
+}
+
+.activity-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.activity-details {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.activity-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.activity-actions button {
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+.btn-use {
+    background: #007bff;
+    color: white;
+}
+
+.btn-delete-activity {
+    background: #dc3545;
+    color: white;
+}
+
+/* Clone button style */
+.btn-clone-service {
+    background: #17a2b8;
+    color: white;
+    padding: 5px 10px;
+    font-size: 11px;
+    margin-left: 8px;
+}
+
+.btn-clone-service:hover {
+    background: #138496;
+}
+
+/* Fix for activity and divider buttons in dark mode */
+body.dark-mode .actions button,
+body.dark-mode .service-actions button,
+body.dark-mode .btn-add-activity,
+body.dark-mode .btn-add-section,
+body.dark-mode .btn-from-library {
+    color: white !important;
+}
+
+body.dark-mode .btn-add-activity {
+    background: #007bff !important;
+    color: white !important;
+}
+
+body.dark-mode .btn-add-section {
+    background: #6c757d !important;
+    color: white !important;
+}
+
+body.dark-mode .btn-from-library {
+    background: #ffc107 !important;
+    color: #333 !important;
+}
+
+body.dark-mode .btn-from-library:hover {
+    background: #e0a800 !important;
+}
+
+/* Ensure all action buttons have proper text color */
+body.dark-mode .actions button,
+body.dark-mode .service-controls button {
+    color: white;
+}
+
+/* Specifically target the Add Activity and Add Divider buttons */
+body.dark-mode .service-block .actions button {
+    color: white !important;
+}
+
+/* Make sure the default button text is visible */
+body.dark-mode button {
+    color: white;
+}
+
+/* Override for the "Add from Library" button which uses dark text */
+body.dark-mode .btn-from-library {
+    color: #333 !important;
+}
+
+/* Fix for the Clone and Delete service buttons */
+body.dark-mode .btn-clone-service {
+    background: #17a2b8 !important;
+    color: white !important;
+}
+
+body.dark-mode .btn-delete-service {
+    background: #dc3545 !important;
+    color: white !important;
+}
