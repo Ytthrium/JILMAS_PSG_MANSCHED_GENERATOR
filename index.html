@@ -3,41 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JIL Masantol - Smart Program Builder</title>
+    <title>JIL Masantol - Church Management System</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-    <div class="no-print controls">
-        <div class="global-config-container">
-            <div class="config-header">
-                <h2>Program Configuration</h2>
-                <button id="themeToggle" class="theme-toggle" title="Toggle Dark/Light Mode">🌙 Dark Mode</button>
+    <div class="app-tabs no-print">
+        <button class="tab-btn active" id="tab-psg">📄 Program Sequence Guide</button>
+        <button class="tab-btn" id="tab-schedule">📅 MAN Schedule Maker</button>
+        <button id="themeToggle" class="theme-toggle" title="Toggle Dark/Light Mode" style="margin-left: auto;">🌙 Dark Mode</button>
+    </div>
+
+    <div id="view-psg" class="view-pane active">
+        <div class="no-print controls">
+            <div class="global-config-container">
+                <div class="config-header" style="justify-content: center;">
+                    <h2 style="margin-bottom: 10px;">Program Configuration</h2>
+                </div>
+                <div class="other-inputs">
+                    <label>Date: <input type="date" id="eventDate"></label>
+                    <label>Subtitle: <input type="text" id="eventSubtitle" placeholder="e.g., Anniversary"></label>
+                    <label>Paper Size: 
+                        <select id="paperSize">
+                            <option value="letter">Short (Letter)</option>
+                            <option value="legal">Long (Legal)</option>
+                            <option value="a4">A4</option>
+                        </select>
+                    </label>
+                </div>
             </div>
-            <div class="other-inputs">
-                <label>Date: <input type="date" id="eventDate"></label>
-                <label>Subtitle: <input type="text" id="eventSubtitle" placeholder="e.g., Anniversary"></label>
-                <label>Paper Size: 
-                    <select id="paperSize">
-                        <option value="letter">Short (Letter)</option>
-                        <option value="legal">Long (Legal)</option>
-                        <option value="a4">A4</option>
-                    </select>
-                </label>
+
+            <div class="actions" style="margin-top: 15px;">
+                <button type="button" id="btnManageLibrary" style="background: #ffc107; color: #333;">📚 Manage Activities Library</button>
+                <button type="button" id="btnAddService" style="background: #6f42c1; color: white;">+ Add New Service</button>
+                <button type="button" id="btnGenerateImage" style="background: #17a2b8; color: white;">Download Image</button>
+                <button type="button" id="btnGeneratePDF" style="background: #28a745; color: white;">Download PDF</button>
             </div>
         </div>
 
-        <div class="actions" style="margin-top: 15px;">
-            <button type="button" id="btnManageLibrary" style="background: #ffc107; color: #333;">📚 Manage Activities Library</button>
-            <button type="button" id="btnAddService" style="background: #6f42c1; color: white;">+ Add New Service</button>
-            <button type="button" id="btnGenerateImage" class="btn-image">Download Image</button>
-            <button type="button" id="btnGeneratePDF" class="btn-download">Download PDF</button>
+        <div id="pdf-wrapper"> 
+            <div id="pdf-content">
+                <div class="header-text">
+                    <h2>Jesus Is Lord Church Masantol</h2>
+                    <p>Program Sequence Guide</p>
+                    <p id="displayDate" style="font-weight: bold;"></p>
+                    <p id="displaySubtitle" style="display: none; font-style: italic;"></p>
+                </div>
+                <div id="services-wrapper"></div>
+            </div>
         </div>
     </div>
 
-    <!-- Activities Library Modal -->
+    <div id="view-schedule" class="view-pane">
+        <div class="no-print controls">
+            <div class="global-config-container">
+                <div class="config-header" style="justify-content: center;">
+                    <h2 style="margin-bottom: 10px;">Schedule Configuration</h2>
+                </div>
+                <div class="other-inputs">
+                    <label>Schedule Month: <input type="month" id="scheduleMonth"></label>
+                </div>
+            </div>
+
+            <div class="global-config-container" style="margin-top: 15px;">
+                <div class="config-header" style="justify-content: center;">
+                    <h2 style="margin-bottom: 10px;">⚡ Quick Assigner</h2>
+                </div>
+                <div class="other-inputs" style="align-items: center;">
+                    <input type="text" id="assignName" placeholder="Enter Name..." style="width: 150px; font-weight: bold; padding: 6px; border-radius: 4px; border: none; outline: none;">
+                    
+                    <select id="assignTable" onchange="updateAssignerTasksAndWeeks()" style="padding: 6px; border-radius: 4px; border: none; outline: none;"></select>
+                    
+                    <select id="assignTask" style="padding: 6px; border-radius: 4px; border: none; outline: none;"></select>
+                    
+                    <div id="assignWeeks" style="display: flex; gap: 10px; flex-wrap: wrap; color: var(--header-text); font-size: 13px; font-weight: bold;">                        </div>
+                    
+                    <button type="button" onclick="applyAssignment()" style="background: #28a745; color: white; font-weight: bold; padding: 6px 15px; border-radius: 4px; cursor: pointer; border: none;">Assign</button>
+                </div>
+            </div>
+
+            <div class="actions" style="margin-top: 15px;">
+                <button type="button" id="btnSchedGenerateImage" style="background: #17a2b8; color: white;">Download Schedule Image</button>
+            </div>
+        </div>
+
+        <div id="sched-pdf-wrapper" style="width: 100%; display: flex; justify-content: center;"> 
+            <div id="sched-pdf-content" style="background: var(--card-bg); width: 100%; max-width: 100%; padding: 15px; box-sizing: border-box; transition: background 0.3s;">
+                <div class="header-text">
+                    <h2>Jesus Is Lord Church Masantol</h2>
+                    <p id="scheduleMainTitle" style="font-size: 14px; font-weight: bold;"></p>
+                </div>
+                <div id="schedule-tables-wrapper"></div>
+            </div>
+        </div>
+        </div>
+
     <div id="libraryModal" class="modal no-print">
         <div class="modal-content">
             <div class="modal-header">
@@ -49,23 +111,10 @@
                     <input type="text" id="newActivityName" placeholder="Activity name">
                     <input type="number" id="newActivityDuration" placeholder="Duration (mins)" value="10">
                     <input type="text" id="newActivityPerson" placeholder="Person in charge">
-                    <button id="btnSaveActivity">💾 Save Activity</button>
+                    <button id="btnSaveActivity" style="background: #28a745; color: white;">💾 Save</button>
                 </div>
                 <div id="activitiesList" class="activities-list"></div>
             </div>
-        </div>
-    </div>
-
-    <div id="pdf-wrapper"> 
-        <div id="pdf-content">
-            <div class="header-text">
-                <h2>Jesus Is Lord Church Masantol</h2>
-                <p>Program Sequence Guide</p>
-                <p id="displayDate" style="font-weight: bold;"></p>
-                <p id="displaySubtitle" style="display: none; font-style: italic;"></p>
-            </div>
-
-            <div id="services-wrapper"></div>
         </div>
     </div>
 
