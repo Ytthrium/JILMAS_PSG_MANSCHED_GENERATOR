@@ -1,16 +1,76 @@
 let servicesData = [
     {
         id: "service-1",
-        title: "MORNING SERVICE",
-        startTime: "08:30",
-        maxDuration: 180,
+        title: "FIRST SERVICE",
+        startTime: "07:20",
+        maxDuration: 130,
         items: [
             { type: 'header', title: "Pre-Program" },
-            { type: 'activity', duration: 20, activity: "Registration & House Music", person: "MIS - MAN Team" },
-            { type: 'activity', duration: 3, activity: "Announcements", person: "MAN Team" },
+            { type: 'activity', duration: 5, activity: "AVP Testimony", person: "MAN TEAM" },
+            { type: 'activity', duration: 3, activity: "Announcements", person: "MAN TEAM" },
+            { type: 'activity', duration: 2, activity: "ECV Declaration", person: "MAN TEAM" },
             { type: 'header', title: "Proper Program" },
-            { type: 'activity', duration: 20, activity: "Praise & Worship", person: "WAN Team" },
-            { type: 'activity', duration: 5, activity: "Opening Prayer", person: "Sis. Jane" }
+            { type: 'activity', duration: 20, activity: "Praise & Worship", person: "WAN TEAM" },
+            { type: 'activity', duration: 3, activity: "Opening Prayer", person: "Sis. Rofannie Roxas" },
+            { type: 'activity', duration: 1, activity: "Monthly Theme", person: "MAN TEAM" },
+            { type: 'activity', duration: 5, activity: "Welcoming", person: "Sis. Angelie Bautista" },
+            { type: 'activity', duration: 10, activity: "Ptrl Announcement", person: "Ptra. Juliet D. Dela Cruz" },
+            { type: 'activity', duration: 60, activity: "Word of God", person: "Sis. Aira Bernardo" },
+            { type: 'activity', duration: 5, activity: "Tithes and offering", person: "Bro. Ronilo Cantero" },
+            { type: 'activity', duration: 5, activity: "Special Number", person: "Sis. Andrea Nicole Cao" },
+            { type: 'activity', duration: 2, activity: "Closing Prayer", person: "Sis. Elena Bernardo" },
+            { type: 'activity', duration: 1, activity: "Benediction Prayer", person: "Ptra. Juliet D. Dela Cruz" },
+            { type: 'activity', duration: 5, activity: "Groupings", person: "LGL/TGL" }
+        ]
+    },
+    {
+        id: "service-2",
+        title: "SECOND SERVICE",
+        startTime: "09:27",
+        maxDuration: 135,
+        items: [
+            { type: 'header', title: "Pre-Program" },
+            { type: 'activity', duration: 3, activity: "Announcements", person: "MAN TEAM" },
+            { type: 'activity', duration: 5, activity: "Opening Salvo", person: "Sis. Rochelle Manansala" },
+            { type: 'activity', duration: 2, activity: "ECV Declaration", person: "MAN TEAM" },
+            { type: 'header', title: "Proper Program" },
+            { type: 'activity', duration: 20, activity: "Praise & Worship", person: "WAN TEAM" },
+            { type: 'activity', duration: 3, activity: "Opening Prayer", person: "Sis. Rofannie Roxas" },
+            { type: 'activity', duration: 1, activity: "Monthly Theme", person: "MAN TEAM" },
+            { type: 'activity', duration: 5, activity: "Welcoming", person: "Sis. Angelie Bautista" },
+            { type: 'activity', duration: 5, activity: "Special Number", person: "Sis. Andrea Nicole Cao" },
+            { type: 'activity', duration: 10, activity: "Ptrl Announcement", person: "Ptra. Juliet D. Dela Cruz" },
+            { type: 'activity', duration: 60, activity: "Word of God", person: "Bro. Jayson Bernardo" },
+            { type: 'activity', duration: 5, activity: "Victory Proclamation", person: "WAN TEAM" },
+            { type: 'activity', duration: 5, activity: "Tithes and offering", person: "Bro. Ronilo Cantero" },
+            { type: 'activity', duration: 2, activity: "Closing Prayer", person: "Sis. Elena Bernardo" },
+            { type: 'activity', duration: 1, activity: "Benediction Prayer", person: "Ptra. Juliet D. Dela Cruz" },
+            { type: 'activity', duration: 6, activity: "Groupings", person: "LGL/TGL" }
+        ]
+    },
+    {
+        id: "service-3",
+        title: "NGYC SERVICE",
+        startTime: "13:50",
+        maxDuration: 140,
+        items: [
+            { type: 'header', title: "Pre-Program" },
+            { type: 'activity', duration: 5, activity: "AVP TESTIMONY", person: "MAN TEAM" },
+            { type: 'activity', duration: 3, activity: "Announcements", person: "MAN TEAM" },
+            { type: 'activity', duration: 2, activity: "ECV Declaration", person: "MAN TEAM" },
+            { type: 'header', title: "Proper Program" },
+            { type: 'activity', duration: 20, activity: "Praise & Worship", person: "WAN TEAM" },
+            { type: 'activity', duration: 3, activity: "Opening Prayer", person: "Bro. Ronilo Cantero" },
+            { type: 'activity', duration: 15, activity: "Welcoming & Awarding", person: "Bro. Mark Luis Manansala" },
+            { type: 'activity', duration: 2, activity: "Chairman's Remarks", person: "Bro. Aldrin Bustos" },
+            { type: 'activity', duration: 3, activity: "Prayer", person: "Bro. Jayson Bernardo" },
+            { type: 'activity', duration: 5, activity: "Photo Op & Intro. Speaker", person: "Bro. Mark Luis Manansala" },
+            { type: 'activity', duration: 60, activity: "Word of God", person: "Bro. Marjon Cano" },
+            { type: 'activity', duration: 5, activity: "Victory Proclamation", person: "WAN TEAM" },
+            { type: 'activity', duration: 5, activity: "Tithes and offering", person: "Bro. Noel Catahan" },
+            { type: 'activity', duration: 5, activity: "Special Number", person: "Sis. Rochelle Manansala" },
+            { type: 'activity', duration: 2, activity: "Closing Prayer", person: "Bro. Aldwin Bustos" },
+            { type: 'activity', duration: 1, activity: "Benediction Prayer", person: "Bro. Jayson Bernardo" }
         ]
     }
 ];
